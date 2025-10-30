@@ -1,31 +1,17 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   https://r-pkgs.org
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
+#' Load Quarto branding elements into global environment
+#'
+#' Searches for a brand.yml file and loads branding information.
+#'
+#' @param root_dir Root directory to start search.
+#' @param brand_filename Name of the branding YAML file.
+#' @return Invisible NULL. Sets brand/brand_colors in global environment.
+#' @examples
+#' get_brand()
+#' @importFrom rlang check_installed
+#' @importFrom bslib bs_theme
+#' @importFrom yaml yaml.load_file
+#' @export
 
-# Simple working version
-
-# get_brand <- function(brand_yml) {
-#   rlang::check_installed(
-#     "bslib",
-#     "bslib is required for brand support in R",
-#     version = "0.9.0"
-#   )
-#   brand <<- attr(bslib::bs_theme(brand = brand_yml), "brand")
-#   brand_colors <<- brand$color$palette
-# }
-
-# Auto search for brand version
 get_brand <- function(root_dir = ".", brand_filename = "brand.yml") {
   # Check dependencies
   rlang::check_installed(
